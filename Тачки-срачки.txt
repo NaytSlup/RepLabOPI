@@ -1,0 +1,56 @@
+s = []
+
+while True:
+    print("Всего автомобилей: ", len(s))
+    print("Выберите команду:\n1.Добавить\n2.Редактировать\n3.Инфо\n0.Выход")
+    choice = input()
+    if choice == '1':
+        s.append([''] * 4)
+    elif choice == '2':
+        if len(s) >= 1:
+            print("Введите порядковый номер автомобиля")
+            num = int(input()) - 1
+            if (num + 1 <= len(s)) and (num + 1 > 0):
+                print("Машина № ", num + 1)
+                print("Марка: ", s[num][0])
+                print("Цвет: ", s[num][1])
+                print("Привод: ", s[num][2])
+                print("Состояние фар: ", s[num][3])
+            else:
+                print("Такого автомобиля не существует")
+        else:
+            print("Сначала добавьте автомобиль")
+            num == 'none'
+            break
+        while True:
+            print("Выберите действие:\n1.Марка\n2.Цвет\n3.Привод\n4.Изменить состояние фар\n5.Удалить автомобиль\n0.В меню")
+            choice1 = input()
+            if choice1 == '1':
+                print("Введите название марки")
+                s[num][0] = str(input())
+                print("Автомобиль № ", num + 1, ": установлена марка", s[num][0])
+            elif choice1 == '2':
+                print("Введите цвет")
+                s[num][1] = str(input())
+                print("Автомобиль № ", num + 1, ": установлен цвет", s[num][1])
+            elif choice1 == '3':
+                print("Введите тип привода:\nПередний\nЗадний\nПолный")
+                s[num][2] = str(input())
+                print("Установлен ", s[num][2], "привод")
+            elif choice1 == '4':
+                if s[num][3] == "выключены" or s[num][3]:
+                    s[num][3] = "выключены"
+                else:
+                    s[num][3] = "включены"
+                print("фары", s[num][3])
+            elif choice1 == '5':
+                print("Вы уверенны, что хотите удалить автомобиль?")
+                resh = str(input())
+                if resh == "да" or resh == "Да":
+                    s[num][0], s[num][1], s[num][2], s[num][3] = '    '
+            elif choice1 == '0':
+                break
+    elif choice == '3':
+        print(s)
+    elif choice == '0':
+        break
